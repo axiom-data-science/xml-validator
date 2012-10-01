@@ -20,6 +20,7 @@ A vim command is also helpful:
 
     echo command VXML !java -jar /usr/local/bin/xml-validator.jar % >> ~/.bashrc
     
-This will allow you to quickly validate XML files in vim as you edit them:
+This will allow you to quickly validate XML files in vim as you edit them (make sure you save the file first):
 
+    :w
     :VXML
