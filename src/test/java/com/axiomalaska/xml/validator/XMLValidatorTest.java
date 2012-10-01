@@ -1,6 +1,6 @@
 package com.axiomalaska.xml.validator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,8 +12,6 @@ import java.nio.charset.Charset;
 
 import org.junit.Test;
 import org.xml.sax.SAXException;
-import org.xml.sax.SAXParseException;
-
 
 public class XMLValidatorTest {
     private static final File WMS_130_GET_CAP = new File( "src/test/resources/wms130GetCapabilities.xml" );
