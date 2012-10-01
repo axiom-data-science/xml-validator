@@ -9,17 +9,17 @@ Example:
 
     java -jar xml-validator.jar my-xml-file.xml
     
-Creating a bash alias for this program, for example:
+You can create a bash alias for easy access, like so:
 
     mvn clean install
     cp target/xml-validator-shaded.jar /usr/local/bin/xml-validator.jar
     echo alias validate-xml=\'java -jar /usr/local/bin/xml-validator.jar\' >> ~/.bashrc
     . ~/.bashrc   
     
-and then creating a vim command for the alias:
+A vim command is also helpful:
 
-    echo command VXML !validate-xml %
+    echo command VXML !java -jar /usr/local/bin/xml-validator.jar % >> ~/.bashrc
     
-will allow you to quickly validate XML files in vim as you edit them:
+This will allow you to quickly validate XML files in vim as you edit them:
 
     :VXML
