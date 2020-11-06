@@ -18,10 +18,10 @@ import org.xml.sax.SAXParseException;
 
 public class XMLValidator implements ErrorHandler {
     private static Logger LOG = Logger.getLogger( XMLValidator.class );
-        
+
     private int errors;
     private int warnings;
-    
+
     public int getErrors() {
         return errors;
     }
@@ -44,7 +44,7 @@ public class XMLValidator implements ErrorHandler {
         warnings++;
         LOG.warn( e.toString() );
     }
-    
+
     public void validate( File xmlFile ) throws SAXException, IOException{
         validate( new StreamSource( new FileReader( xmlFile ) ) );
     }
@@ -52,22 +52,22 @@ public class XMLValidator implements ErrorHandler {
     public void validate( String xmlString ) throws SAXException, IOException{
         validate( new StreamSource( new StringReader( xmlString ) ) );
     }
-    
+
     public void validate( StreamSource source ) throws SAXException, IOException{
         Validator validator = SchemaFactory.newInstance( XMLConstants.W3C_XML_SCHEMA_NS_URI ).newSchema().newValidator();
         validator.setErrorHandler( this );
-        validator.validate( source );        
+        validator.validate( source );
     }
-    
+
     public static void main( String[] args ) throws FileNotFoundException, SAXException, IOException{
         if( args.length != 1 ){
             throw new RuntimeException("Must take a single argument (XML file or XML string)");
         }
-        
+
         XMLValidator xmlValidator = new XMLValidator();
-        
+
         File file = new File( args[0] );
-        
+
         if( file.exists() ){
             //it's a file
             LOG.info( "Validating XML file: " + file.getAbsolutePath() );
@@ -77,7 +77,7 @@ public class XMLValidator implements ErrorHandler {
             LOG.info( "Validating XML string");
             xmlValidator.validate( args[0] );
         }
-        
+
         LOG.info( "Total XML errors: " + xmlValidator.getErrors() );
         LOG.info( "Total XML warnings: " + xmlValidator.getWarnings() );
     }

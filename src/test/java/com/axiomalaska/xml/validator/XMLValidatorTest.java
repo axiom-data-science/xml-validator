@@ -16,7 +16,7 @@ import org.xml.sax.SAXException;
 public class XMLValidatorTest {
     private static final File WMS_130_GET_CAP = new File( "src/test/resources/wms130GetCapabilities.xml" );
     private static final File WMS_130_GET_CAP_ERROR = new File( "src/test/resources/wms130GetCapabilities-error.xml" );
-    
+
     @Test
     public void testWms() throws FileNotFoundException, SAXException, IOException{
         XMLValidator xmlValidator = new XMLValidator();
@@ -24,7 +24,7 @@ public class XMLValidatorTest {
         assertEquals( 0, xmlValidator.getErrors() );
         assertEquals( 0, xmlValidator.getWarnings() );
     }
-    
+
     @Test
     public void testWmsError() throws FileNotFoundException, SAXException, IOException{
         XMLValidator xmlValidator = new XMLValidator();
@@ -61,5 +61,5 @@ public class XMLValidatorTest {
         } finally {
             stream.close();
         }
-      }    
+      }
 }
