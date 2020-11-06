@@ -43,5 +43,5 @@ DOCKER_BUILDKIT=1 docker build -t xml-validator .
 Then run the validator against a document:
 
 ```
-
+docker run --rm -v $(pwd)/some_doc.xml:/doc.xml xml-validator
 ```
