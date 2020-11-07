@@ -10,10 +10,13 @@ import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.Charset;
 
+import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
 public class XMLValidatorTest {
+    private static Logger LOG = Logger.getLogger( XMLValidatorTest.class );
+
     private static final File WMS_130_GET_CAP = new File( "src/test/resources/wms130GetCapabilities.xml" );
     private static final File WMS_130_GET_CAP_ERROR = new File( "src/test/resources/wms130GetCapabilities-error.xml" );
 
@@ -23,6 +26,7 @@ public class XMLValidatorTest {
         xmlValidator.validate( WMS_130_GET_CAP );
         assertEquals( 0, xmlValidator.getErrors() );
         assertEquals( 0, xmlValidator.getWarnings() );
+        LOG.info("Resolved schemas:\n" + xmlValidator.getResolvedNamespacesLog());
     }
 
     @Test
